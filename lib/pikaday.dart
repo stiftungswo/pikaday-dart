@@ -3,7 +3,6 @@ library lib.pikaday;
 
 import "package:js/js.dart";
 import "dart:html" show HtmlElement;
-import "package:func/func.dart";
 
 /// Type definitions for pikaday-time
 /// Project: https://github.com/owenmead/Pikaday
@@ -16,8 +15,11 @@ import "package:func/func.dart";
 class Pikaday {
   // @Ignore
   Pikaday.fakeConstructor$();
+
   external HtmlElement get el;
+
   external set el(HtmlElement v);
+
   external factory Pikaday(PikadayOptions options);
 
   /// Extends the existing configuration options for Pikaday object with the options provided.
@@ -105,15 +107,25 @@ class Pikaday {
 @JS()
 abstract class PikadayI18nConfig {
   external String get previousMonth;
+
   external set previousMonth(String v);
+
   external String get nextMonth;
+
   external set nextMonth(String v);
+
   external List<String> get months;
+
   external set months(List<String> v);
+
   external List<String> get weekdays;
+
   external set weekdays(List<String> v);
+
   external List<String> get weekdaysShort;
+
   external set weekdaysShort(List<String> v);
+
   external factory PikadayI18nConfig(
       {String previousMonth,
       String nextMonth,
@@ -127,166 +139,204 @@ abstract class PikadayI18nConfig {
 abstract class PikadayOptions {
   /// Bind the datepicker to a form field.
   external HtmlElement get field;
+
   external set field(HtmlElement v);
 
   /// The default output format for toString() and field value.
   /// Requires Moment.js for custom formatting.
   external String get format;
+
   external set format(String v);
 
   /// Use a different element to trigger opening the datepicker.
   /// Default: field element.
   external HtmlElement get trigger;
+
   external set trigger(HtmlElement v);
 
   /// Automatically show/hide the datepicker on field focus.
   /// Default: true if field is set.
   external bool get bound;
+
   external set bound(bool v);
 
   /// Preferred position of the datepicker relative to the form field
   /// (e.g. 'top right'). Automatic adjustment may occur to avoid
   /// displaying outside the viewport. Default: 'bottom left'.
   external String get position;
+
   external set position(String v);
 
   /// Can be set to false to not reposition the datepicker within the
   /// viewport, forcing it to take the configured position. Default: true.
   external bool get reposition;
+
   external set reposition(bool v);
 
   /// DOM node to render calendar into, see container example.
   /// Default: undefined.
   external HtmlElement get container;
+
   external set container(HtmlElement v);
 
   /// The initial date to view when first opened.
   external DateTime get defaultDate;
+
   external set defaultDate(DateTime v);
 
   /// Make the defaultDate the initial selected value.
   external bool get setDefaultDate;
+
   external set setDefaultDate(bool v);
 
   /// First day of the week (0: Sunday, 1: Monday, etc).
   external num get firstDay;
+
   external set firstDay(num v);
 
   /// The earliest date that can be selected (this should be a native
   /// Date object - e.g. new Date() or moment().toDate()).
   external DateTime get minDate;
+
   external set minDate(DateTime v);
 
   /// The latest date that can be selected (this should be a native
   /// Date object - e.g. new Date() or moment().toDate()).
   external DateTime get maxDate;
+
   external set maxDate(DateTime v);
 
   /// Disallow selection of Saturdays and Sundays.
   external bool get disableWeekends;
+
   external set disableWeekends(bool v);
 
   /// Callback function that gets passed a Date object for each day
   /// in view. Should return true to disable selection of that day.
-  external Func1<DateTime, bool> get disableDayFn;
-  external set disableDayFn(Func1<DateTime, bool> v);
+  external bool Function(DateTime) get disableDayFn;
+
+  external set disableDayFn(bool Function(DateTime) v);
 
   /// Number of years either side (e.g. 10) or array of upper/lower range
   /// (e.g. [1900, 2015]).
   external dynamic /*num|List<num>*/ get yearRange;
+
   external set yearRange(dynamic /*num|List<num>*/ v);
 
   /// Show the ISO week number at the head of the row. Default: false.
   external bool get showWeekNumber;
+
   external set showWeekNumber(bool v);
 
   /// Reverse the calendar for right-to-left languages. Default: false.
   external bool get isRTL;
+
   external set isRTL(bool v);
 
   /// Language defaults for month and weekday names.
   external PikadayI18nConfig get i18n;
+
   external set i18n(PikadayI18nConfig v);
 
   /// Additional text to append to the year in the title.
   external String get yearSuffix;
+
   external set yearSuffix(String v);
 
   /// Render the month after the year in the title. Default: false.
   external bool get showMonthAfterYear;
+
   external set showMonthAfterYear(bool v);
 
   /// Render days of the calendar grid that fall in the next or previous months to the current month instead of rendering an empty table cell. Default: false.
   external bool get showDaysInNextAndPreviousMonths;
+
   external set showDaysInNextAndPreviousMonths(bool v);
 
   /// Number of visible calendars.
   external num get numberOfMonths;
+
   external set numberOfMonths(num v);
 
   /// When numberOfMonths is used, this will help you to choose where the
   /// main calendar will be (default left, can be set to right). Only used
   /// for the first display or when a selected date is not already visible.
   external String get mainCalendar;
+
   external set mainCalendar(String v);
 
   /// Define a class name that can be used as a hook for styling different
   /// themes. Default: null.
   external String get theme;
+
   external set theme(String v);
 
   /// Callback function for when a date is selected.
-  external VoidFunc1<DateTime> get onSelect;
-  external set onSelect(VoidFunc1<DateTime> v);
+  external void Function(DateTime) get onSelect;
+
+  external set onSelect(void Function(DateTime) v);
 
   /// Callback function for when the picker becomes visible.
-  external VoidFunc0 get onOpen;
-  external set onOpen(VoidFunc0 v);
+  external void Function() get onOpen;
+
+  external set onOpen(void Function() v);
 
   /// Callback function for when the picker is hidden.
-  external VoidFunc0 get onClose;
-  external set onClose(VoidFunc0 v);
+  external void Function() get onClose;
+
+  external set onClose(void Function() v);
 
   /// Callback function for when the picker draws a new month.
-  external VoidFunc0 get onDraw;
-  external set onDraw(VoidFunc0 v);
+  external void Function() get onDraw;
+
+  external set onDraw(void Function() v);
 
   /// --pikaday-time specific addition--
   /// Optional boolean property to specify whether to show time controls with calendar or not.
   external bool get showTime;
+
   external set showTime(bool v);
 
   /// Optional boolean property to specify whether to show minute controls with calendar or not.
   external bool get showMinutes;
+
   external set showMinutes(bool v);
 
   /// Optional boolean property to specify whether to show second controls with calendar or not.
   external bool get showSeconds;
+
   external set showSeconds(bool v);
 
   /// Optional boolean property to specify whether to use 24 hours format or not.
   external bool get use24hour;
+
   external set use24hour(bool v);
 
   /// Optional numeric property to specify the increment step for hour.
   external num get incrementHourBy;
+
   external set incrementHourBy(num v);
 
   /// Optional numeric property to specify the increment step for minute.
   external num get incrementMinuteBy;
+
   external set incrementMinuteBy(num v);
 
   /// Optional numeric property to specify the increment step for second.
   external num get incrementSecondBy;
+
   external set incrementSecondBy(num v);
 
   /// Optional numeric property to prevent calendar from auto-closing after date is selected.
   external bool get autoClose;
+
   external set autoClose(bool v);
 
   /// Optional string added to left of time select
   external String get timeLabel;
+
   external set timeLabel(String v);
+
   external factory PikadayOptions(
       {HtmlElement field,
       String format,
@@ -301,7 +351,7 @@ abstract class PikadayOptions {
       DateTime minDate,
       DateTime maxDate,
       bool disableWeekends,
-      Func1<DateTime, bool> disableDayFn,
+      bool Function(DateTime) disableDayFn,
       dynamic /*num|List<num>*/ yearRange,
       bool showWeekNumber,
       bool isRTL,
@@ -312,10 +362,10 @@ abstract class PikadayOptions {
       num numberOfMonths,
       String mainCalendar,
       String theme,
-      VoidFunc1<DateTime> onSelect,
-      VoidFunc0 onOpen,
-      VoidFunc0 onClose,
-      VoidFunc0 onDraw,
+      void Function(DateTime) onSelect,
+      void Function() onOpen,
+      void Function() onClose,
+      void Function() onDraw,
       bool showTime,
       bool showMinutes,
       bool showSeconds,
@@ -328,4 +378,3 @@ abstract class PikadayOptions {
 }
 
 // End module Pikaday
-
