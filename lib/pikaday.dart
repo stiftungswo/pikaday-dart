@@ -3,6 +3,7 @@ library lib.pikaday;
 
 import "package:js/js.dart";
 import "dart:html" show HtmlElement;
+import "date.dart";
 
 /// Type definitions for pikaday-time
 /// Project: https://github.com/owenmead/Pikaday
@@ -272,9 +273,9 @@ abstract class PikadayOptions {
   external set theme(String v);
 
   /// Callback function for when a date is selected.
-  external void Function(DateTime) get onSelect;
+  external void Function(DateJS) get onSelect;
 
-  external set onSelect(void Function(DateTime) v);
+  external set onSelect(void Function(DateJS) v);
 
   /// Callback function for when the picker becomes visible.
   external void Function() get onOpen;
