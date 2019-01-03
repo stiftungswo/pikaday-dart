@@ -1,5 +1,7 @@
 # pikaday
 
+:exclamation: Attention, this project is not maintained anymore. Please use the original version from [apptreesoftware](https://github.com/apptreesoftware/pikaday-dart).
+
 package:js bindings for [Pikaday][pikaday] by David Bushnell.
 
 This includes a version of Pikaday with [time support][pikaday-timezone]
